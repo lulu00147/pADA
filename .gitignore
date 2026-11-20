@@ -1,0 +1,9 @@
+/target/
+/.duckdb_state/
+/.duckdb_tmp/
+/build-gcc/
+/duckdb-cache/
+/config.toml
+*.log
+__pycache__/
+*.pyc

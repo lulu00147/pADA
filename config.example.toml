@@ -1,0 +1,29 @@
+[server]
+workspace_dir = "./data_workspace"
+temp_dir = "./.duckdb_tmp"
+state_dir = "./.duckdb_state"
+extension_directory = ""
+max_memory = "4GB"
+stream_limit = 5000
+max_result_bytes = 10485760
+query_timeout_secs = 60
+spatial_query_timeout_secs = 120
+max_columns = 500
+cell_truncate_chars = 1000
+excel_max_size_mb = 500
+allowed_extensions = ["spatial", "excel"]
+transport = "stdio"
+host = "127.0.0.1"
+port = 3100
+http_bearer_token = "replace-with-a-long-random-secret"
+allow_remote_http = false
+allowed_origins = "http://localhost:3100"
+max_concurrent_queries = 8
+cache_capacity = 128
+gc_interval_secs = 600
+temp_table_ttl_secs = 86400
+data_file_ttl_secs = 604800
+underscore_data_file_ttl_secs = 31536000
+[logging]
+level = "info"
+file_path = ""

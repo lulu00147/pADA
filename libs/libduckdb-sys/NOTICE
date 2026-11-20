@@ -1,0 +1,18 @@
+libduckdb-sys (vendored, modified)
+
+This directory is a modified copy of the crate `libduckdb-sys` 1.10504.0
+(crates.io), originally MIT-licensed by DuckDB Labs and contributors. The
+upstream LICENSE file is kept unchanged.
+
+Modifications made for pADA:
+
+- build.rs: no download, no bindgen, no DuckDB compilation. It copies the
+  pre-generated bindings (src/bindgen_bundled_version.rs) to $OUT_DIR and
+  emits link directives for a prebuilt DuckDB static library located via
+  DUCKDB_LIB_DIR or <repo>/duckdb-cache/<target>/.
+- Cargo.toml: all [build-dependencies] removed (unused by the patched
+  build.rs); feature names are kept as empty features because the `duckdb`
+  crate enables them by name.
+- Removed files: src/bindgen_bundled_version_loadable.rs, wrapper.h,
+  wrapper_ext.h, Cargo.toml.orig, .cargo_vcs_info.json, .cargo-ok.
+- Removed the crate-internal test modules.

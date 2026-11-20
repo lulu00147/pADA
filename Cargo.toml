@@ -1,0 +1,50 @@
+[package]
+name = "pada"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.85"
+publish = false
+license = "MIT"
+description = "pADA: agentic data analysis MCP server over DuckDB"
+repository = "https://github.com/lulu00147/pADA"
+authors = ["lulu <lulu@msn.cn>"]
+readme = "README.md"
+keywords = ["mcp", "duckdb", "data-analysis", "llm", "agent"]
+categories = ["database", "command-line-utilities"]
+[features]
+default = ["duckdb"]
+duckdb = ["dep:duckdb", "duckdb/extensions-full", "duckdb-impl"]
+duckdb-impl = []
+duckdb-cached = ["dep:duckdb", "duckdb-impl"]
+http = ["dep:axum", "dep:tower-http"]
+[dependencies]
+tokio = { version = "1.36", features = ["rt", "rt-multi-thread", "macros", "sync", "time", "signal", "io-util", "io-std", "net", "fs"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = { version = "1.0", features = ["preserve_order"] }
+duckdb = { version = "1.0", default-features = false, optional = true }
+sqlparser = { version = "0.45", features = ["visitor"] }
+dunce = "1.0"
+fs2 = "0.4"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+tracing-appender = "0.2"
+regex = "1.10"
+toml = "0.8"
+clap = { version = "4.5", features = ["derive"] }
+async-trait = "0.1"
+encoding_rs = "0.8"
+zip = "2"
+indexmap = "2"
+thiserror = "2"
+axum = { version = "0.8", features = ["multipart"], optional = true }
+tower-http = { version = "0.6", features = ["cors"], optional = true }
+uuid = { version = "1", features = ["v4"] }
+[profile.release]
+lto = true
+strip = true
+codegen-units = 1
+[patch.crates-io]
+libduckdb-sys = { path = "libs/libduckdb-sys" }
+[[bin]]
+name = "pADA"
+path = "src/main.rs"

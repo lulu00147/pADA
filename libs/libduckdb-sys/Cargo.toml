@@ -1,0 +1,52 @@
+[package]
+edition = "2024"
+rust-version = "1.85.1"
+name = "libduckdb-sys"
+version = "1.10504.0"
+authors = [
+    "DuckDB Labs and contributors",
+    "wangfenjin <wangfenj@gmail.com>",
+]
+build = "build.rs"
+links = "duckdb"
+exclude = ["duckdb-sources"]
+autolib = false
+autobins = false
+autoexamples = false
+autotests = false
+autobenches = false
+description = "Native bindings to the libduckdb library, C API"
+homepage = "https://github.com/duckdb/duckdb-rs"
+keywords = [
+    "duckdb",
+    "database",
+    "ffi",
+]
+categories = [
+    "external-ffi-bindings",
+    "database",
+]
+license = "MIT"
+repository = "https://github.com/duckdb/duckdb-rs"
+[features]
+autocomplete = []
+buildtime_bindgen = []
+bundled = []
+bundled-cmake = []
+default = [
+    "vcpkg",
+    "pkg-config",
+]
+extensions-full = []
+icu = []
+json = []
+loadable-extension = []
+parquet = []
+pkg-config = []
+tpcds = []
+tpch = []
+vcpkg = []
+winduckdb = []
+[lib]
+name = "libduckdb_sys"
+path = "src/lib.rs"
